@@ -3,13 +3,11 @@ package com.example.tasteofkorea.controller;
 import com.example.tasteofkorea.service.FastApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
+@CrossOrigin(origins = "http://localhost:5173") // React 앱의 주소
 
 @RestController
 @RequestMapping("/api/food")
