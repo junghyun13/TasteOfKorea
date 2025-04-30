@@ -1,11 +1,10 @@
 package com.example.tasteofkorea.controller;
 
+import com.example.tasteofkorea.dto.FilterCriteria;
 import com.example.tasteofkorea.dto.RecipeDTO;
+import com.example.tasteofkorea.entity.RecipeEntity;
 import com.example.tasteofkorea.entity.TestFileEntity;
-import com.example.tasteofkorea.service.FastApiService;
-import com.example.tasteofkorea.service.RecipeService;
-import com.example.tasteofkorea.service.RecommenderService;
-import com.example.tasteofkorea.service.TestFileService;
+import com.example.tasteofkorea.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import java.util.Map;
 @Tag(name = "음식 API", description = "한식 이미지 분석 및 정보 제공 API")
-@CrossOrigin(origins = "http://localhost:5173") // React 앱의 주소
+@CrossOrigin(origins = {"http://localhost:5173","https://taste-of-korea-9uvr7edhg-junghyun13s-projects.vercel.app/"}) // React 앱의 주소
 
 @RestController
 @RequiredArgsConstructor  // Lombok을 사용하여 생성자 자동 생성
@@ -80,6 +79,13 @@ public class FoodController {
         } catch (Exception e) {
             return ResponseEntity.status(404).build();
         }
+    }
+
+    private final FoodFilterService foodFilterService;
+
+    @PostMapping("/filter")
+    public List<RecipeDTO> getSafeFoods(@RequestBody FilterCriteria filterCriteria) {
+        return foodFilterService.getSafeFoods(filterCriteria);
     }
 
 
