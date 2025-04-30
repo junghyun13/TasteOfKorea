@@ -83,6 +83,7 @@ public class FoodController {
 
     private final FoodFilterService foodFilterService;
 
+    @Operation(summary = "필터링 음식추천", description = "알러지 체크후 추천할때 로그까지 포함해서 로그 수 많은순으로 리스트 출력")
     @PostMapping("/filter")
     public List<RecipeDTO> getSafeFoods(@RequestBody FilterCriteria filterCriteria) {
         return foodFilterService.getSafeFoods(filterCriteria);
