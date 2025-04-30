@@ -11,7 +11,6 @@ import lombok.Setter;
 public class FoodFilterListEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // food_id -> food.id 외래키 매핑

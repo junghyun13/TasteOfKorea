@@ -12,9 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import java.util.Map;
+@Tag(name = "음식 API", description = "한식 이미지 분석 및 정보 제공 API")
 @CrossOrigin(origins = "http://localhost:5173") // React 앱의 주소
 
 @RestController
@@ -26,6 +28,7 @@ public class FoodController {
     private FastApiService fastApiService;
 
     // FastAPI와 연결하여 이미지 예측
+    @Operation(summary = "이미지 예측", description = "FastAPI 서버로부터 음식 종류 예측")
     @PostMapping("/predict")
     public ResponseEntity<Map<String, Object>> predictFood(@RequestParam("file") MultipartFile file) {
         try {
@@ -42,6 +45,7 @@ public class FoodController {
     private RecipeService recipeService;
 
     // 특정 음식 조회
+    @Operation(summary = "음식 정보 조회", description = "음식 ID로 한식 정보를 가져옴")
     @GetMapping("/{id}")
     public ResponseEntity<RecipeDTO> getRecipeById(@PathVariable("id") int id) {
         RecipeDTO recipe = recipeService.getRecipeById(id);
@@ -54,6 +58,7 @@ public class FoodController {
 
     private final TestFileService testService;
 
+    @Operation(summary = "이미지 파일 업로드", description = "이미지 파일을 S3에 업로드")
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         try {
@@ -66,6 +71,7 @@ public class FoodController {
     }
 
 
+    @Operation(summary = "이미지 정보 조회", description = "ID를 기준으로 이미지 정보를 조회")
     @GetMapping("/file/{id}")
     public ResponseEntity<TestFileEntity> getFileInfo(@PathVariable("id") int id) {
         try {

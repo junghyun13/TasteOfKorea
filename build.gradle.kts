@@ -26,6 +26,7 @@ repositories {
 extra["springAiVersion"] = "1.0.0-M6"
 
 dependencies {
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 	//implementation("org.apache.httpcomponents.client5:httpclient5:5.2")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class RecommenderService {
 
-    @Autowired
+    @Autowired //수정
     private RecipeRepository recipeRepository;
 
     // 코사인 유사도 계산
