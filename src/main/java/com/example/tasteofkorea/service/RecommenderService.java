@@ -19,6 +19,7 @@ public class RecommenderService {
     private RecipeRepository recipeRepository;
 
     // 코사인 유사도 계산
+    /*
     private double cosineSimilarity(Map<String, Integer> userPreferences, List<Integer> recipeScores) {
         double dotProduct = 0.0;
         double normA = 0.0;
@@ -101,5 +102,5 @@ public class RecommenderService {
         });
 
         return recommendedRecipes.stream().limit(5).collect(Collectors.toList());  // 상위 5개의 추천 결과 반환
-    }
+    }*/
 }

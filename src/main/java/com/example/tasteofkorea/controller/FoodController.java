@@ -1,19 +1,24 @@
 package com.example.tasteofkorea.controller;
 
 import com.example.tasteofkorea.dto.RecipeDTO;
+import com.example.tasteofkorea.entity.TestFileEntity;
 import com.example.tasteofkorea.service.FastApiService;
 import com.example.tasteofkorea.service.RecipeService;
 import com.example.tasteofkorea.service.RecommenderService;
+import com.example.tasteofkorea.service.TestFileService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.util.List;
 import java.util.Map;
 @CrossOrigin(origins = "http://localhost:5173") // React 앱의 주소
 
 @RestController
+@RequiredArgsConstructor  // Lombok을 사용하여 생성자 자동 생성
 @RequestMapping("/api/food")
 public class FoodController {
 
@@ -47,14 +52,41 @@ public class FoodController {
         }
     }
 
-    @Autowired
+    private final TestFileService testService;
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            testService.saveFile(file);
+            return ResponseEntity.ok("파일 업로드 성공");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(400).body("업로드 실패: " + e.getMessage());
+        }
+    }
+
+
+    @GetMapping("/file/{id}")
+    public ResponseEntity<TestFileEntity> getFileInfo(@PathVariable("id") int id) {
+        try {
+            TestFileEntity file = testService.getFile(id);
+            return ResponseEntity.ok(file);
+        } catch (Exception e) {
+            return ResponseEntity.status(404).build();
+        }
+    }
+
+
+
+
+    /*@Autowired
     private RecommenderService recommenderService;
     // Recommend food items based on user preferences (in the format of a map)
     @PostMapping("/recommend")
     public ResponseEntity<List<RecipeDTO>> recommendFood(@RequestBody Map<String, Integer> userPreferences) {
         List<RecipeDTO> recommendedRecipes = recommenderService.recommendFood(userPreferences);
         return ResponseEntity.ok(recommendedRecipes);
-    }
+    }*/
 
 
 }

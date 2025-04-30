@@ -1,29 +1,45 @@
 package com.example.tasteofkorea.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "recipes")
+@Table(name = "food")
 @Getter
 @Setter
 public class RecipeEntity {
+
     @Id
-    private int id;
+    private Long id;
+
+    @Column(name = "k_name", length = 255)
     private String koreanName;
-    private String romanizedName;
+
+    @Column(name = "e_name", length = 500)
     private String englishName;
-    private String category;
-    private String madeWith;
-    private String imgLink;
+
+    @Column(length = 255)
+    private String pronunciation;
+
+    @Column(length = 1000)
+    private String information;
+
+    @Column(name = "recipe_link", length = 500)
     private String recipeLink;
-    private int spicy;
-    private int sour;
-    private int salty;
-    private int oily;
-    private int bigun;
-    private int calories;
+
+    @Column(name = "eat_link", length = 500)
+    private String eatLink;
+
+    @Column(name = "recipe_source", length = 255)
+    private String recipeSource;
+
+    @Column(name = "eating_source", length = 255)
+    private String eatingSource;
+
+    @Column(name = "img_link", length = 255)
+    private String imageLink;
+
+    @Column(name = "image_source", length = 255)
+    private String imageSource;
 }

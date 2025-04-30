@@ -1,28 +1,24 @@
 package com.example.tasteofkorea.dto;
 
 public class RecipeDTO {
-
-    private int id;
+    private Long id;
     private String koreanName;
-    private String romanizedName;
     private String englishName;
-    private String category;
-    private String madeWith;
-    private String imgLink;
+    private String pronunciation;
+    private String information;
     private String recipeLink;
-    private int spicy;
-    private int sour;
-    private int salty;
-    private int oily;
-    private int bigun;
-    private int calories;
+    private String eatLink;
+    private String recipeSource;     // 추가
+    private String eatingSource;     // 추가
+    private String imageLink;        // 추가
+    private String imageSource;      // 추가
 
     // Getters and Setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,14 +30,6 @@ public class RecipeDTO {
         this.koreanName = koreanName;
     }
 
-    public String getRomanizedName() {
-        return romanizedName;
-    }
-
-    public void setRomanizedName(String romanizedName) {
-        this.romanizedName = romanizedName;
-    }
-
     public String getEnglishName() {
         return englishName;
     }
@@ -50,28 +38,20 @@ public class RecipeDTO {
         this.englishName = englishName;
     }
 
-    public String getCategory() {
-        return category;
+    public String getPronunciation() {
+        return pronunciation;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setPronunciation(String pronunciation) {
+        this.pronunciation = pronunciation;
     }
 
-    public String getMadeWith() {
-        return madeWith;
+    public String getInformation() {
+        return information;
     }
 
-    public void setMadeWith(String madeWith) {
-        this.madeWith = madeWith;
-    }
-
-    public String getImgLink() {
-        return imgLink;
-    }
-
-    public void setImgLink(String imgLink) {
-        this.imgLink = imgLink;
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     public String getRecipeLink() {
@@ -82,51 +62,43 @@ public class RecipeDTO {
         this.recipeLink = recipeLink;
     }
 
-    public int getSpicy() {
-        return spicy;
+    public String getEatLink() {
+        return eatLink;
     }
 
-    public void setSpicy(int spicy) {
-        this.spicy = spicy;
+    public void setEatLink(String eatLink) {
+        this.eatLink = eatLink;
     }
 
-    public int getSour() {
-        return sour;
+    public String getRecipeSource() {
+        return recipeSource;
     }
 
-    public void setSour(int sour) {
-        this.sour = sour;
+    public void setRecipeSource(String recipeSource) {
+        this.recipeSource = recipeSource;
     }
 
-    public int getSalty() {
-        return salty;
+    public String getEatingSource() {
+        return eatingSource;
     }
 
-    public void setSalty(int salty) {
-        this.salty = salty;
+    public void setEatingSource(String eatingSource) {
+        this.eatingSource = eatingSource;
     }
 
-    public int getOily() {
-        return oily;
+    public String getImageLink() {
+        return imageLink;
     }
 
-    public void setOily(int oily) {
-        this.oily = oily;
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
-    public int getBigun() {
-        return bigun;
+    public String getImageSource() {
+        return imageSource;
     }
 
-    public void setBigun(int bigun) {
-        this.bigun = bigun;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-
-    public void setCalories(int calories) {
-        this.calories = calories;
+    public void setImageSource(String imageSource) {
+        this.imageSource = imageSource;
     }
 }
